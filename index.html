@@ -1,0 +1,1015 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+<meta charset="UTF-8">\
+<meta name="viewport" content="width=device-width, initial-scale=1">\
+<meta name="theme-color" content="#b9dfd3">\
+<title>FridgeBuddy</title>\
+<style>\
+:root\{\
+  --ink:#294e4c;\
+  --green:#356d59;\
+  --muted:#62776c;\
+  --line:#b7cbb4;\
+  --paper:#fffdf2;\
+\}\
+*\{box-sizing:border-box\}\
+body\{\
+  margin:0;\
+  color:var(--ink);\
+  background-color:#f3f0df;\
+  background-image:radial-gradient(#a6bba740 .8px,transparent .8px);\
+  background-size:8px 8px;\
+  font:14px/1.5 Arial,sans-serif;\
+\}\
+button,input,select,textarea\{font:inherit\}\
+button\{cursor:pointer;transition:transform .15s\}\
+button:hover\{transform:translateY(-1px)\}\
+button:focus-visible\{outline:3px solid #cf9c38;outline-offset:3px\}\
+header\{background:#d3e9d8;border-bottom:2px solid var(--ink)\}\
+nav,main\{max-width:1180px;margin:auto;padding:22px 24px\}\
+nav\{display:flex;align-items:center;justify-content:space-between\}\
+.brand\{display:flex;align-items:center;gap:12px\}\
+.brand strong\{font:bold 28px Georgia,serif;letter-spacing:-1px\}\
+.brand small\{\
+  display:block;\
+  font:9px/1.5 "Courier New",monospace;\
+  letter-spacing:1.4px;\
+  margin-top:3px;\
+\}\
+.logo\{\
+  position:relative;\
+  width:31px;height:42px;\
+  border:3px solid var(--ink);\
+  background:#f5edbb;\
+  box-shadow:3px 3px #8daf9b;\
+\}\
+.logo:before\{\
+  content:"";position:absolute;left:0;right:0;top:12px;\
+  border-top:3px solid var(--ink);\
+\}\
+.logo:after\{\
+  content:"";position:absolute;top:20px;left:5px;\
+  width:3px;height:9px;background:var(--ink);\
+\}\
+.local\{font:11px "Courier New",monospace\}\
+.hero\{\
+  position:relative;\
+  display:flex;\
+  align-items:center;\
+  justify-content:space-between;\
+  gap:20px;\
+  min-height:245px;\
+  padding:30px 34px;\
+  background:#b9dfd3;\
+  border:2px solid var(--ink);\
+  border-radius:4px;\
+  box-shadow:5px 5px #b4c3a4;\
+  margin:4px 0 28px;\
+  overflow:hidden;\
+\}\
+.hero:after\{\
+  content:"";position:absolute;bottom:0;left:0;right:0;height:10px;\
+  border-top:2px solid var(--ink);\
+  background:repeating-linear-gradient(\
+    90deg,#82b5a4 0 20px,#d7e9bf 20px 40px\
+  );\
+\}\
+.eyebrow\{\
+  font:10px/1.5 "Courier New",monospace;\
+  letter-spacing:1.2px;\
+\}\
+h1\{\
+  max-width:510px;\
+  font:normal 43px/1.07 Georgia,serif;\
+  letter-spacing:-1px;\
+  margin:15px 0;\
+\}\
+.hero p\{font-size:13px;color:#41665a;margin:0\}\
+.fridge-scene\{position:relative;width:255px;height:190px;flex-shrink:0\}\
+.fridge-scene>svg\{width:230px;height:202px;position:absolute;top:-9px\}\
+.sticker\{\
+  position:absolute;right:0;bottom:13px;\
+  padding:9px;\
+  background:#f8e392;\
+  border:1px solid #a18d4c;\
+  box-shadow:2px 2px #82ab97;\
+  transform:rotate(-8deg);\
+  color:#645a36;\
+  font:13px/1.2 Georgia,serif;\
+\}\
+.stats\{\
+  display:grid;grid-template-columns:repeat(4,1fr);\
+  background:var(--paper);\
+  border:1px solid var(--line);\
+  border-radius:4px;\
+\}\
+.stat\{\
+  padding:17px 22px;\
+  display:flex;justify-content:space-between;align-items:center;\
+  border-right:1px solid var(--line);\
+\}\
+.stat:last-child\{border-right:0\}\
+.stat span\{font-size:11px;color:var(--muted)\}\
+.stat strong\{display:block;font:30px/1.3 "Courier New",monospace;margin-top:6px\}\
+.stat i\{\
+  display:grid;place-items:center;\
+  width:33px;height:33px;border-radius:3px;\
+  font:22px monospace;background:#eaf1e1;\
+\}\
+.stat:nth-child(3) i\{background:#fff0cc\}\
+.stat:nth-child(4) i\{background:#fbe5df\}\
+.reminder\{\
+  margin-top:20px;\
+  padding:13px 17px;\
+  background:#f8edc5;\
+  color:#795b2b;\
+  border:1px solid #cdbb7a;\
+  border-left:5px solid #c7a443;\
+  border-radius:3px;\
+  font-size:12px;\
+\}\
+.layout\{\
+  display:grid;grid-template-columns:290px 1fr;\
+  gap:27px;margin-top:26px;align-items:start;\
+\}\
+.panel,.food\{\
+  background:var(--paper);\
+  border:1px solid var(--line);\
+  border-radius:4px;\
+\}\
+.panel\{padding:22px;box-shadow:3px 3px #d9ddc7\}\
+h2\{font:bold 20px Georgia,serif;margin:0\}\
+.sub\{font-size:11px;color:var(--muted);margin:5px 0 17px\}\
+.form-head\{border-bottom:1px dashed var(--line);margin-bottom:16px\}\
+label\{display:block;font-size:11px;font-weight:bold;margin:13px 0 6px\}\
+input,select,textarea\{\
+  width:100%;padding:10px;\
+  background:#fffef8;\
+  color:var(--ink);\
+  border:1px solid #bbc9af;\
+  border-radius:3px;\
+  font-size:12px;\
+\}\
+input:focus,select:focus,textarea:focus\{outline:2px solid #92baa0\}\
+textarea\{resize:vertical;min-height:68px\}\
+.row\{display:grid;grid-template-columns:1fr 80px;gap:10px\}\
+.primary\{\
+  background:#3c745c;color:white;\
+  border:1px solid #294f42;\
+  box-shadow:0 3px #294f42;\
+  padding:11px 15px;border-radius:3px;font-size:12px;\
+\}\
+.secondary\{\
+  background:#f9f7e9;color:var(--ink);\
+  border:1px solid #9bb49a;\
+  padding:8px 12px;border-radius:3px;font-size:11px;\
+\}\
+.full\{width:100%;margin-top:16px\}\
+.form-foot\{text-align:center;font:10px "Courier New",monospace;margin:17px 0 0;color:var(--muted)\}\
+.feedback\{font-size:12px;margin:12px 0\}\
+.impact\{\
+  position:relative;\
+  margin-top:23px;\
+  background:#eee6b9;\
+  border-color:#c2b978;\
+  box-shadow:3px 3px #d9d2ad;\
+  transform:rotate(-1deg);\
+\}\
+.impact:before\{\
+  content:"";position:absolute;left:calc(50% - 33px);top:-7px;\
+  width:66px;height:14px;background:#d2d7bfad;transform:rotate(4deg);\
+\}\
+.impact strong\{display:block;font:36px "Courier New",monospace;margin:14px 0 0\}\
+.impact .saved-label\{font:9px "Courier New",monospace;letter-spacing:1px\}\
+.impact p\{font-size:12px;color:#67683f;margin-top:14px\}\
+.impact small\{display:block;color:#6e714e;font-size:9px;margin-top:15px\}\
+.inventory-head\{\
+  display:flex;justify-content:space-between;align-items:center;gap:10px;\
+  border-bottom:2px solid #567e68;padding-bottom:13px;margin-bottom:15px;\
+\}\
+.inventory-head .sub\{margin-bottom:0\}\
+.count\{font:10px "Courier New",monospace;background:#e0e7cd;padding:3px 7px;margin-left:5px\}\
+.tools\{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px\}\
+.sort-row\{\
+  display:flex;align-items:center;justify-content:space-between;\
+  gap:10px;margin:12px 0 17px;\
+  font:10px "Courier New",monospace;color:var(--muted);\
+\}\
+.sort-row select\{width:auto;border:0;background:transparent;font-size:10px;padding:5px 0\}\
+.cards\{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px\}\
+.food\{\
+  position:relative;padding:17px;\
+  box-shadow:0 4px #b1c4b0;\
+  overflow-wrap:anywhere;\
+\}\
+.food:after\{\
+  content:"";position:absolute;bottom:-7px;left:-3px;right:-3px;\
+  height:3px;background:#789787;\
+\}\
+.food-top\{display:flex;gap:13px;align-items:center;margin-bottom:13px\}\
+.art\{\
+  width:70px;height:73px;flex-shrink:0;\
+  border-bottom:3px solid #c1d2b6;\
+\}\
+.pixel\{width:100%;height:100%;image-rendering:pixelated\}\
+h3\{font:bold 18px/1.25 Georgia,serif;margin:0 0 5px\}\
+.category,.details\{font-size:10px;color:var(--muted)\}\
+.status\{\
+  display:inline-block;\
+  padding:4px 7px;\
+  font:10px/1.5 "Courier New",monospace;\
+  background:#edf4e5;color:#4f7741;\
+  border-left:3px solid #7f9d5a;\
+\}\
+.status.soon\{background:#fff0cc;color:#967020;border-left-color:#c39736\}\
+.status.urgent\{background:#fbe5df;color:#aa5144;border-left-color:#be695b\}\
+.details\{display:flex;justify-content:space-between;gap:8px;margin-top:12px\}\
+.notes\{font-size:12px;color:var(--muted);margin-top:10px\}\
+.actions\{\
+  display:flex;align-items:center;gap:5px;\
+  border-top:1px dashed #c3cfb9;\
+  margin-top:14px;padding-top:12px;\
+\}\
+.eat\{\
+  background:#e5edd9;color:var(--green);\
+  border:1px solid #b6cba7;\
+  padding:7px 9px;border-radius:3px;\
+  font-size:11px;margin-right:auto;\
+\}\
+.text-btn\{background:none;border:0;padding:6px;color:var(--muted);font-size:10px\}\
+.empty\{\
+  grid-column:1/-1;\
+  display:flex;flex-direction:column;align-items:center;justify-content:center;\
+  min-height:350px;padding:25px;text-align:center;\
+  border:1px dashed #91ac8f;border-radius:4px;background:#e6edda;\
+\}\
+.empty .art\{width:90px;height:90px;margin-bottom:15px\}\
+.empty h3\{font:24px Georgia,serif\}\
+.empty p\{font-size:12px;color:var(--muted);max-width:300px;margin:10px 0 20px\}\
+footer\{\
+  display:flex;justify-content:space-between;gap:20px;\
+  border-top:1px solid #a8bfa5;margin-top:32px;padding-top:20px;\
+  font:10px/1.5 "Courier New",monospace;color:var(--muted);\
+\}\
+.warning\{padding:12px;background:#fbe5df;color:#914a3e;font-size:12px;margin-bottom:15px\}\
+.toast\{\
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);\
+  max-width:90vw;padding:13px 20px;\
+  background:var(--ink);color:white;\
+  border-radius:4px;box-shadow:0 5px 20px #0002;\
+  font-size:12px;z-index:10;\
+\}\
+[hidden]\{display:none!important\}\
+@media(max-width:850px)\{\
+  .layout\{grid-template-columns:250px 1fr\}\
+  .cards\{grid-template-columns:1fr\}\
+  .tools\{grid-template-columns:1fr 1fr\}\
+  .tools input\{grid-column:1/-1\}\
+  h1\{font-size:35px\}\
+  .hero\{padding:25px\}\
+  .fridge-scene\{width:210px\}\
+  .fridge-scene>svg\{width:200px\}\
+  .stat\{padding:15px\}\
+  .stat i\{display:none\}\
+\}\
+@media(max-width:620px)\{\
+  nav,main\{padding:18px\}\
+  .local\{display:none\}\
+  .brand strong\{font-size:25px\}\
+  .brand small\{font-size:8px\}\
+  .hero\{display:block;padding:24px 20px 180px;min-height:360px\}\
+  h1\{font-size:34px;max-width:340px\}\
+  .hero p\{font-size:12px;max-width:270px\}\
+  .eyebrow\{font-size:9px\}\
+  .fridge-scene\{position:absolute;bottom:10px;right:12px;width:235px;height:170px\}\
+  .fridge-scene>svg\{height:180px;top:0\}\
+  .sticker\{bottom:10px\}\
+  .stats\{grid-template-columns:1fr 1fr\}\
+  .stat:nth-child(2)\{border-right:0\}\
+  .stat:nth-child(-n+2)\{border-bottom:1px solid var(--line)\}\
+  .stat i\{display:grid\}\
+  .layout\{grid-template-columns:1fr\}\
+  .impact\{margin:23px 3px 5px\}\
+  .cards\{grid-template-columns:1fr 1fr;gap:20px 11px\}\
+  .food\{padding:12px\}\
+  .food-top\{flex-direction:column;align-items:start;gap:10px\}\
+  h3\{font-size:17px\}\
+  .details\{flex-direction:column;gap:3px\}\
+  .actions\{flex-wrap:wrap\}\
+  .eat\{width:100%;margin:0\}\
+  .count\{margin-left:3px\}\
+  .sort-row select\{max-width:155px\}\
+  footer\{font-size:9px\}\
+\}\
+@media(prefers-reduced-motion:reduce)\{button\{transition:none\}\}\
+</style>\
+</head>\
+<body>\
+<header>\
+<nav>\
+  <div class="brand">\
+    <div class="logo" aria-hidden="true"></div>\
+    <div><strong>FridgeBuddy</strong><small>THE DORM FRIDGE COMPANION</small></div>\
+  </div>\
+  <span class="local">\uc0\u9673  Stored in this browser</span>\
+</nav>\
+</header>\
+\
+<main>\
+<noscript>\
+  <div class="warning">Enable JavaScript to add and save food.</div>\
+</noscript>\
+<div id="warning" class="warning" role="alert" hidden></div>\
+\
+<section class="hero">\
+  <div>\
+    <div class="eyebrow">OPEN 24/7 \'b7 YOUR PERSONAL MINI MART</div>\
+    <h1>What's in your fridge today?</h1>\
+    <p>The milk behind the leftovers? It\'92s on the list.</p>\
+  </div>\
+  <div class="fridge-scene" role="img" aria-label="Pixel illustration of your stocked fridge">\
+    <svg viewBox="0 0 180 158" shape-rendering="crispEdges" aria-hidden="true">\
+      <ellipse cx="89" cy="149" rx="72" ry="5" fill="#9fc8ba"/>\
+      <path d="M30 9H109V147H30Z" fill="#344f57"/>\
+      <path d="M35 14H104V139H35Z" fill="#b8d9d5"/>\
+      <path d="M40 19H99V134H40Z" fill="#e9f1d6"/>\
+      <path d="M40 47H99V52H40ZM40 82H99V87H40ZM40 117H99V122H40Z" fill="#729d98"/>\
+      <g id="fridge-stock"></g>\
+      <path d="M112 14H164V140H112Z" fill="#344f57"/>\
+      <path d="M117 19H159V135H117Z" fill="#b8d9d5"/>\
+      <path d="M122 24H154V130H122Z" fill="#e2ebd6"/>\
+      <path d="M119 61H157V66H119ZM119 103H157V108H119Z" fill="#729d98"/>\
+      <path d="M126 42H132V60H126Z" fill="#ed9c5d"/>\
+      <path d="M127 38H131V43H127Z" fill="#c87043"/>\
+      <path d="M138 46H147V60H138Z" fill="#d0a050"/>\
+      <path d="M140 42H145V46H140Z" fill="#71864a"/>\
+      <path d="M128 80H137V102H128Z" fill="#72b3c0"/>\
+      <path d="M130 77H135V81H130Z" fill="#e5f1da"/>\
+      <path d="M129 89H136V96H129Z" fill="#f7f1cf"/>\
+      <path d="M143 84H151V102H143Z" fill="#e89491"/>\
+      <path d="M145 80H149V85H145Z" fill="#e5f1da"/>\
+      <path d="M40 126H99V133H40Z" fill="#c6ddcc"/>\
+      <path d="M60 128H76V130H60Z" fill="#729d98"/>\
+      <path d="M29 145H109V150H29ZM112 140H164V145H112Z" fill="#344f57"/>\
+    </svg>\
+    <span class="sticker">no snack<br>left behind.</span>\
+  </div>\
+</section>\
+\
+<section class="stats" aria-label="Fridge summary">\
+  <div class="stat"><div><span>Total items</span><strong id="total">0</strong></div><i aria-hidden="true">\uc0\u9638 </i></div>\
+  <div class="stat"><div><span>Fresh items</span><strong id="fresh">0</strong></div><i aria-hidden="true">\uc0\u10047 </i></div>\
+  <div class="stat"><div><span>Expiring soon</span><strong id="soon">0</strong></div><i aria-hidden="true">\uc0\u9719 </i></div>\
+  <div class="stat"><div><span>Expired / urgent</span><strong id="urgent">0</strong></div><i aria-hidden="true">!</i></div>\
+</section>\
+\
+<div id="reminder" class="reminder" role="status" hidden></div>\
+\
+<div class="layout">\
+<aside>\
+  <section class="panel">\
+    <div class="form-head">\
+      <h2 id="form-title">\uc0\u65291  Stock the fridge</h2>\
+      <p class="sub">Just brought groceries back?</p>\
+    </div>\
+\
+    <form id="food-form" novalidate>\
+      <div id="feedback" class="feedback" role="status" hidden></div>\
+\
+      <label for="name">Food name *</label>\
+      <input id="name" required maxlength="100" placeholder="e.g. Strawberry yogurt">\
+\
+      <label for="category">Category</label>\
+      <select id="category">\
+        <option>Dairy</option>\
+        <option>Fruits</option>\
+        <option>Vegetables</option>\
+        <option>Meat</option>\
+        <option>Drinks</option>\
+        <option>Leftovers</option>\
+        <option>Other</option>\
+      </select>\
+\
+      <div class="row">\
+        <div>\
+          <label for="expiry">Expiration date *</label>\
+          <input id="expiry" type="date" required>\
+        </div>\
+        <div>\
+          <label for="quantity">Quantity</label>\
+          <input id="quantity" type="number" min="1" max="9999" step="1" value="1">\
+        </div>\
+      </div>\
+\
+      <label for="notes">Notes (optional)</label>\
+      <textarea id="notes" maxlength="500" placeholder="Opened Monday, top shelf\'85"></textarea>\
+\
+      <button id="submit" class="primary full" type="submit">\uc0\u65291  Add to Fridge</button>\
+      <button id="cancel" class="secondary full" type="button" hidden>Cancel editing</button>\
+      <p class="form-foot">Stored in this browser. No sign-in.</p>\
+    </form>\
+  </section>\
+\
+  <section class="panel impact">\
+    <h2>Your impact \uc0\u55356 \u57137 </h2>\
+    <strong id="saved">0</strong>\
+    <span class="saved-label">FOOD ITEMS SAVED</span>\
+    <p id="impact-message"></p>\
+    <small>Counts food records eaten by their expiration date, not measured environmental savings.</small>\
+  </section>\
+</aside>\
+\
+<section class="inventory">\
+  <div class="inventory-head">\
+    <div>\
+      <h2>Your fridge <span id="count" class="count">0 items</span></h2>\
+      <p class="sub">Everything you\'92ve put on the shelves.</p>\
+    </div>\
+    <button id="demo" class="secondary">\uc0\u8635  Load demo data</button>\
+  </div>\
+\
+  <div class="tools">\
+    <input id="search" type="search" aria-label="Search food by name" placeholder="Search your fridge\'85">\
+\
+    <select id="status-filter" aria-label="Filter freshness">\
+      <option value="all">All freshness</option>\
+      <option value="fresh">Fresh</option>\
+      <option value="soon">Expiring soon</option>\
+      <option value="urgent">Expired / urgent</option>\
+    </select>\
+\
+    <select id="category-filter" aria-label="Filter category">\
+      <option value="all">All categories</option>\
+      <option>Dairy</option>\
+      <option>Fruits</option>\
+      <option>Vegetables</option>\
+      <option>Meat</option>\
+      <option>Drinks</option>\
+      <option>Leftovers</option>\
+      <option>Other</option>\
+    </select>\
+  </div>\
+\
+  <div class="sort-row">\
+    <span id="results"></span>\
+    <select id="sort" aria-label="Sort by expiration date">\
+      <option value="asc">Expiration: soonest first</option>\
+      <option value="desc">Expiration: latest first</option>\
+    </select>\
+  </div>\
+\
+  <div id="cards" class="cards"></div>\
+</section>\
+</div>\
+\
+<footer>\
+  <span>FridgeBuddy / Less forgotten food.</span>\
+  <span>A tiny tool for a shared-fridge kind of life.</span>\
+</footer>\
+</main>\
+\
+<div id="toast" class="toast" role="status" hidden></div>\
+\
+<script>\
+'use strict';\
+\
+const $ = id => document.getElementById(id);\
+const KEY = 'fridgebuddy.v1';\
+const categories = \{\
+  Dairy:'\uc0\u55358 \u56667 ',\
+  Fruits:'\uc0\u55356 \u57171 ',\
+  Vegetables:'\uc0\u55358 \u56684 ',\
+  Meat:'\uc0\u55358 \u56681 ',\
+  Drinks:'\uc0\u55358 \u56771 ',\
+  Leftovers:'\uc0\u55356 \u57201 ',\
+  Other:'\uc0\u55358 \u56682 '\
+\};\
+\
+let items = [];\
+let saved = 0;\
+let editing = null;\
+let toastTimer;\
+let storageBlocked = false;\
+\
+// Compare local calendar dates without daylight-saving off-by-one errors.\
+function today() \{\
+  const date = new Date();\
+  return [\
+    date.getFullYear(),\
+    String(date.getMonth()+1).padStart(2,'0'),\
+    String(date.getDate()).padStart(2,'0')\
+  ].join('-');\
+\}\
+\
+function dayNumber(value) \{\
+  const [year,month,day] = value.split('-').map(Number);\
+  const date = new Date(0);\
+  date.setUTCFullYear(year,month-1,day);\
+  date.setUTCHours(0,0,0,0);\
+  return date.getTime()/86400000;\
+\}\
+\
+function validDate(value) \{\
+  if (typeof value !== 'string' ||\
+      !/^\\d\{4\}-\\d\{2\}-\\d\{2\}$/.test(value) ||\
+      value.startsWith('0000')) return false;\
+\
+  const number = dayNumber(value);\
+  return Number.isFinite(number) &&\
+    new Date(number*86400000).toISOString().slice(0,10) === value;\
+\}\
+\
+function daysLeft(item) \{\
+  return dayNumber(item.expiry)-dayNumber(today());\
+\}\
+\
+function freshness(item) \{\
+  const days = daysLeft(item);\
+  return \{\
+    key:days>3?'fresh':days>0?'soon':'urgent',\
+    label:days>3\
+      ? `Fresh \'97 $\{days\} days left`\
+      : days>0\
+      ? `Expiring Soon \'97 $\{days\} day$\{days===1?'':'s'\} left`\
+      : days===0\
+      ? 'Expires Today!'\
+      : `Expired $\{-days\} day$\{days===-1?'':'s'\} ago`\
+  \};\
+\}\
+\
+function dateLabel(value) \{\
+  const [year,month,day] = value.split('-').map(Number);\
+  const date = new Date(0);\
+  date.setFullYear(year,month-1,day);\
+  return date.toLocaleDateString(undefined,\{\
+    month:'short',day:'numeric',year:'numeric'\
+  \});\
+\}\
+\
+function warn(message) \{\
+  $('warning').textContent = message;\
+  $('warning').hidden = false;\
+\}\
+\
+function load() \{\
+  try \{\
+    const raw = localStorage.getItem(KEY);\
+    if (!raw) return;\
+\
+    const data = JSON.parse(raw);\
+    const ids = new Set();\
+\
+    if (!data || !Array.isArray(data.items) ||\
+        !Number.isSafeInteger(data.saved) || data.saved<0 ||\
+        !data.items.every(item =>\
+          item &&\
+          typeof item.id==='string' &&\
+          !ids.has(item.id) && ids.add(item.id) &&\
+          typeof item.name==='string' && item.name.trim() &&\
+          Object.prototype.hasOwnProperty.call(categories,item.category) &&\
+          validDate(item.expiry) &&\
+          Number.isInteger(item.quantity) && item.quantity>0 &&\
+          typeof item.notes==='string'\
+        )) \{\
+      storageBlocked = true;\
+      warn('Saved data could not be read. It has been left untouched. Changes in this session will not overwrite it.');\
+      return;\
+    \}\
+\
+    items = data.items;\
+    saved = data.saved;\
+  \} catch \{\
+    storageBlocked = true;\
+    warn('Browser storage is unavailable or unreadable. You can use the app, but changes in this session will not be saved.');\
+  \}\
+\}\
+\
+function persist() \{\
+  if (storageBlocked) return;\
+  try \{\
+    localStorage.setItem(KEY,JSON.stringify(\{items,saved\}));\
+  \} catch \{\
+    warn('Your browser could not save changes. Changes may be lost after refreshing or closing this page.');\
+  \}\
+\}\
+\
+function notify(message) \{\
+  clearTimeout(toastTimer);\
+  $('toast').textContent = message;\
+  $('toast').hidden = false;\
+  toastTimer = setTimeout(()=>$('toast').hidden=true,4000);\
+\}\
+\
+// User-provided text is never interpreted as HTML.\
+function el(tag,className,text) \{\
+  const node = document.createElement(tag);\
+  if (className) node.className = className;\
+  if (text !== undefined) node.textContent = text;\
+  return node;\
+\}\
+\
+function button(text,className,handler,label) \{\
+  const node = el('button',className,text);\
+  node.type = 'button';\
+  if (label) node.setAttribute('aria-label',label);\
+  node.addEventListener('click',handler);\
+  return node;\
+\}\
+\
+// Original food sprites on an integer grid; no image downloads needed.\
+function sprite(category) \{\
+  const ns = 'http://www.w3.org/2000/svg';\
+  const svg = document.createElementNS(ns,'svg');\
+  svg.setAttribute('viewBox','0 0 24 24');\
+  svg.setAttribute('class','pixel');\
+  svg.setAttribute('shape-rendering','crispEdges');\
+  svg.setAttribute('aria-hidden','true');\
+\
+  const shapes = [];\
+  const r = (x,y,w,h,color)=>shapes.push([x,y,w,h,color]);\
+\
+  if (category==='Fruits') \{\
+    r(10,3,3,4,'#477347');\
+    r(6,6,12,2,'#74a850');\
+    r(5,8,15,8,'#c95559');\
+    r(7,16,11,3,'#c95559');\
+    r(10,19,5,2,'#a3424c');\
+    r(5,9,3,7,'#e9827d');\
+    [[9,10],[15,10],[12,14],[8,15],[16,15]]\
+      .forEach(([x,y])=>r(x,y,1,2,'#ffe5a5'));\
+  \} else if (category==='Vegetables') \{\
+    r(8,4,8,3,'#88ad46');\
+    r(5,7,14,3,'#88ad46');\
+    r(3,10,18,7,'#6e963b');\
+    r(6,17,13,3,'#5b8134');\
+    r(10,20,5,2,'#b6c876');\
+    r(11,7,3,13,'#b6c876');\
+    r(7,10,4,3,'#a1bd55');\
+    r(14,14,4,3,'#91ad45');\
+  \} else if (category==='Meat') \{\
+    r(5,7,14,2,'#b75d50');\
+    r(3,9,18,8,'#da8274');\
+    r(5,17,14,3,'#b75d50');\
+    r(6,10,12,2,'#f8c3ac');\
+    r(5,12,2,4,'#f8c3ac');\
+    r(16,12,2,4,'#f8c3ac');\
+    r(8,14,7,2,'#ad514b');\
+  \} else if (category==='Leftovers'||category==='Other') \{\
+    r(3,8,18,3,'#e6bd74');\
+    r(4,11,16,9,'#81a99b');\
+    r(6,12,12,5,'#f4e2ad');\
+    r(7,13,4,2,'#cf7551');\
+    r(13,14,3,2,'#6e9650');\
+    r(5,5,14,3,'#c9ddd1');\
+    r(8,4,8,1,'#7fa496');\
+  \} else \{\
+    const milk = category==='Dairy';\
+    r(8,3,8,2,milk?'#6e99af':'#67915b');\
+    r(7,5,10,3,milk?'#dbe7db':'#eee1b1');\
+    r(5,8,14,13,milk?'#8bbacc':'#eab86b');\
+    r(7,9,2,11,milk?'#b5d8de':'#f7d794');\
+    r(5,11,14,7,'#fff9df');\
+    r(9,12,6,1,milk?'#5c7c8c':'#7e9759');\
+    r(10,14,4,3,milk?'#81aab9':'#e99651');\
+    r(6,21,12,1,milk?'#699dad':'#ca974a');\
+  \}\
+\
+  r(7,23,11,1,'#dbe2d0');\
+\
+  for (const [x,y,width,height,fill] of shapes) \{\
+    const rect = document.createElementNS(ns,'rect');\
+    for (const [key,value] of Object.entries(\{\
+      x,y,width,height,fill\
+    \})) rect.setAttribute(key,value);\
+    svg.append(rect);\
+  \}\
+\
+  return svg;\
+\}\
+\
+function foodCard(item) \{\
+  const state = freshness(item);\
+  const card = el('article','food');\
+  const top = el('div','food-top');\
+  const art = el('div','art');\
+  const title = el('div');\
+\
+  art.append(sprite(item.category));\
+  title.append(\
+    el('h3','',item.name),\
+    el('div','category',`$\{categories[item.category]\} $\{item.category\}`)\
+  );\
+  top.append(art,title);\
+  card.append(top,el('span',`status $\{state.key\}`,state.label));\
+\
+  const details = el('div','details');\
+  details.append(\
+    el('span','',`Expires $\{dateLabel(item.expiry)\}`),\
+    el('span','',`Qty: $\{item.quantity\}`)\
+  );\
+  card.append(details);\
+\
+  if (item.notes) card.append(el('p','notes',item.notes));\
+\
+  const actions = el('div','actions');\
+  actions.append(\
+    button('\uc0\u10003  Eaten','eat',()=>eat(item.id),`Mark $\{item.name\} as eaten`),\
+    button('Edit','text-btn',()=>edit(item.id),`Edit $\{item.name\}`),\
+    button('Delete','text-btn',()=>remove(item.id),`Delete $\{item.name\}`)\
+  );\
+  card.append(actions);\
+  return card;\
+\}\
+\
+function clearFilters() \{\
+  $('search').value = '';\
+  $('status-filter').value = 'all';\
+  $('category-filter').value = 'all';\
+\}\
+\
+function renderFridge() \{\
+  const stock = $('fridge-stock');\
+  stock.replaceChildren();\
+\
+  items.slice()\
+    .sort((a,b)=>a.expiry.localeCompare(b.expiry))\
+    .slice(0,6)\
+    .forEach((item,index)=>\{\
+      const icon = sprite(item.category);\
+      icon.removeAttribute('class');\
+      icon.setAttribute('x',43+(index%2)*27);\
+      icon.setAttribute('y',22+Math.floor(index/2)*35);\
+      icon.setAttribute('width','25');\
+      icon.setAttribute('height','25');\
+      stock.append(icon);\
+    \});\
+\}\
+\
+function render() \{\
+  renderFridge();\
+\
+  const counts = \{fresh:0,soon:0,urgent:0\};\
+  items.forEach(item=>counts[freshness(item).key]++);\
+\
+  $('total').textContent = items.length;\
+  Object.keys(counts).forEach(key=>$(key).textContent=counts[key]);\
+  $('count').textContent = `$\{items.length\} item$\{items.length===1?'':'s'\}`;\
+  $('saved').textContent = saved;\
+\
+  $('impact-message').textContent = saved\
+    ? `$\{saved\} food item$\{saved===1?' was':'s were'\} eaten before going out of date. That\'92s food put to use.`\
+    : 'Finished something before its date? Mark it eaten to count it here.';\
+\
+  const soon = items.filter(item=>daysLeft(item)>=0 && daysLeft(item)<=3)\
+    .sort((a,b)=>a.expiry.localeCompare(b.expiry));\
+\
+  $('reminder').hidden = !soon.length;\
+  $('reminder').textContent = soon.length\
+    ? `\uc0\u9728  Heads up! $\{soon.slice(0,3).map(item=>item.name).join(', ')\}$\{soon.length>3?` and $\{soon.length-3\} more`:''\} $\{soon.length===1?'is':'are'\} expiring soon. Use these first when planning your next meal.`\
+    : '';\
+\
+  const query = $('search').value.trim().toLowerCase();\
+  const status = $('status-filter').value;\
+  const category = $('category-filter').value;\
+\
+  const filtered = items.filter(item=>\
+    item.name.toLowerCase().includes(query) &&\
+    (status==='all'||freshness(item).key===status) &&\
+    (category==='all'||item.category===category)\
+  ).sort((a,b)=>\
+    a.expiry.localeCompare(b.expiry)*($('sort').value==='asc'?1:-1)\
+  );\
+\
+  $('results').textContent = `Showing $\{filtered.length\} of $\{items.length\} items`;\
+  $('cards').replaceChildren();\
+\
+  if (filtered.length) \{\
+    filtered.forEach(item=>$('cards').append(foodCard(item)));\
+    return;\
+  \}\
+\
+  const empty = el('div','empty');\
+  const art = el('div','art');\
+  art.append(sprite('Dairy'));\
+\
+  empty.append(\
+    art,\
+    el('h3','',items.length?'No matching food':'Your fridge is empty! \uc0\u55358 \u56778 '),\
+    el('p','',items.length\
+      ? 'Try a different search or filter.'\
+      : 'Add your first food item to get started, or load the demo to look around.'),\
+    button(items.length?'Clear filters':'\uc0\u65291  Add your first item','primary',()=>\{\
+      if (items.length) \{\
+        clearFilters();\
+        render();\
+      \} else \{\
+        $('name').focus();\
+      \}\
+    \})\
+  );\
+\
+  $('cards').append(empty);\
+\}\
+\
+function resetForm() \{\
+  editing = null;\
+  $('food-form').reset();\
+  $('feedback').hidden = true;\
+  $('form-title').textContent = '\uc0\u65291  Stock the fridge';\
+  $('submit').textContent = '\uc0\u65291  Add to Fridge';\
+  $('cancel').hidden = true;\
+\}\
+\
+function edit(id) \{\
+  const item = items.find(item=>item.id===id);\
+  if (!item) return;\
+\
+  editing = id;\
+  for (const field of ['name','category','expiry','quantity','notes']) \{\
+    $(field).value = item[field];\
+  \}\
+\
+  $('feedback').hidden = true;\
+  $('form-title').textContent = '\uc0\u9998  Edit your food';\
+  $('submit').textContent = 'Save changes';\
+  $('cancel').hidden = false;\
+  $('name').focus();\
+  $('food-form').scrollIntoView(\{block:'center'\});\
+\}\
+\
+function remove(id) \{\
+  const item = items.find(item=>item.id===id);\
+  if (!item || !confirm(`Delete \'93$\{item.name\}\'94 from your fridge?`)) return;\
+\
+  items = items.filter(item=>item.id!==id);\
+  if (editing===id) resetForm();\
+\
+  persist();\
+  render();\
+  notify('Item removed from your fridge.');\
+\}\
+\
+function eat(id) \{\
+  const item = items.find(item=>item.id===id);\
+  if (!item) return;\
+\
+  const qualifies = daysLeft(item)>=0;\
+\
+  if (!qualifies && !confirm(\
+    `\'93$\{item.name\}\'94 is past its expiration date. This tracker cannot determine food safety. Remove it as eaten? It will not count as saved.`\
+  )) return;\
+\
+  items = items.filter(item=>item.id!==id);\
+  if (qualifies) saved++;\
+  if (editing===id) resetForm();\
+\
+  persist();\
+  render();\
+  notify(qualifies\
+    ? 'Marked eaten. Added to your saved-food count.'\
+    : 'Removed. Expired food is not counted as saved.');\
+\}\
+\
+$('food-form').addEventListener('submit',event=>\{\
+  event.preventDefault();\
+\
+  const feedback = $('feedback');\
+  const error = message=>\{\
+    feedback.textContent = message;\
+    feedback.style.color = '#aa5144';\
+    feedback.hidden = false;\
+  \};\
+\
+  const name = $('name').value.trim();\
+\
+  if (!name) \{\
+    error('Please enter a food name.');\
+    $('name').focus();\
+    return;\
+  \}\
+\
+  if (!validDate($('expiry').value)) \{\
+    error('Please choose a complete, valid expiration date.');\
+    $('expiry').focus();\
+    return;\
+  \}\
+\
+  const quantity = $('quantity').value===''\
+    ? 1 : Number($('quantity').value);\
+\
+  if ($('quantity').validity.badInput ||\
+      !Number.isInteger(quantity) || quantity<1 || quantity>9999) \{\
+    error('Quantity must be a whole number from 1 to 9999, or left blank.');\
+    $('quantity').focus();\
+    return;\
+  \}\
+\
+  const wasEditing = editing!==null;\
+\
+  const item = \{\
+    id:editing || (\
+      globalThis.crypto?.randomUUID?.() ||\
+      `$\{Date.now()\}-$\{Math.random()\}`\
+    ),\
+    name,\
+    category:$('category').value,\
+    expiry:$('expiry').value,\
+    quantity,\
+    notes:$('notes').value.trim()\
+  \};\
+\
+  if (editing) \{\
+    items = items.map(old=>old.id===editing?item:old);\
+  \} else \{\
+    items.push(item);\
+  \}\
+\
+  persist();\
+  resetForm();\
+  clearFilters();\
+  render();\
+\
+  feedback.textContent = wasEditing\
+    ? 'Changes saved.'\
+    : 'Added to your fridge! Find your food in the inventory.';\
+  feedback.style.color = '#356d59';\
+  feedback.hidden = false;\
+\
+  notify(wasEditing?'Changes saved.':'Food added to your fridge.');\
+\});\
+\
+$('cancel').addEventListener('click',resetForm);\
+\
+for (const id of ['search','status-filter','category-filter','sort']) \{\
+  $(id).addEventListener('input',render);\
+\}\
+\
+$('demo').addEventListener('click',()=>\{\
+  if (items.length && !confirm(\
+    'Replace your current fridge inventory with five demo items? Your saved-food counter will be kept.'\
+  )) return;\
+\
+  items = [\
+    ['Milk','Dairy',2],\
+    ['Strawberries','Fruits',1],\
+    ['Yogurt','Dairy',5],\
+    ['Spinach','Vegetables',0],\
+    ['Orange Juice','Drinks',7]\
+  ].map(([name,category,offset],index)=>(\{\
+    id:`demo-$\{Date.now()\}-$\{index\}`,\
+    name,\
+    category,\
+    expiry:new Date(\
+      (dayNumber(today())+offset)*86400000\
+    ).toISOString().slice(0,10),\
+    quantity:1,\
+    notes:''\
+  \}));\
+\
+  persist();\
+  resetForm();\
+  clearFilters();\
+  render();\
+  notify('Five example foods added. Dates are relative to today.');\
+\});\
+\
+load();\
+render();\
+\
+// Update date-dependent labels after midnight and when returning to the tab.\
+let lastDay = today();\
+\
+setInterval(()=>\{\
+  if (today()!==lastDay) \{\
+    lastDay = today();\
+    render();\
+  \}\
+\},30000);\
+\
+document.addEventListener('visibilitychange',()=>\{\
+  if (!document.hidden) render();\
+\});\
+\
+window.addEventListener('storage',event=>\{\
+  if (event.key===KEY || event.key===null) \{\
+    items = [];\
+    saved = 0;\
+    storageBlocked = false;\
+    load();\
+    resetForm();\
+    render();\
+  \}\
+\});\
+</script>\
+</body>\
+</html>}
